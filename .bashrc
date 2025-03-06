@@ -1,0 +1,1 @@
+/home/thorarinn/linuxtoolbox/mybash/.bashrc
