@@ -118,3 +118,22 @@ alias lla='lsd -Al'                # List & hidden files
 alias las='lsd -A'                 # Hidden files
 alias lls='lsd -l'                 # List
 
+# =============================================
+#  10. Other Aliases
+# =============================================
+
+alias bat='batcat'
+
+
+# =============================================
+#  11. config
+# =============================================
+
+# **fzf Configuration**
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh  # Enable fzf keybindings and completion
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh  # Enable fzf keybindings
+export FZF_DEFAULT_COMMAND='find . -type f'
+export FZF_DEFAULT_OPTS="--height 80% --border --preview 'if [ -d {} ]; then ls -lh --color=always {}; else batcat --color=always {}; fi'"
+
+
+
