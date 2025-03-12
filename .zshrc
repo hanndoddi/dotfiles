@@ -1,12 +1,33 @@
+# Load Completion System FIRST
+autoload -Uz compinit && compinit
+
 # Load Zinit
 source ~/.local/share/zinit/zinit.git/zinit.zsh
 
 # Plugins via Zinit
-zinit light zdharma-continuum/fast-syntax-highlighting  # Fast syntax highlighting
-zinit light zsh-users/zsh-autosuggestions               # Autosuggestions in the terminal
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions
 zinit wait lucid for \
     atload"zicompinit; zicdreplay" \
-    zsh-users/zsh-completions                           # Enhanced completion
+    zsh-users/zsh-completions
+zinit light Aloxaf/fzf-tab
+
+# Enable colors for lsd and other commands
+export CLICOLOR=1
+eval "$(dircolors -b ~/.config/lscolors/LS_COLORS)"
+
+# Use preview window for file completions
+zstyle ':completion:*' fzf-preview \
+    '[[ -f $realpath ]] && batcat --color=always --style=numbers $realpath || ls --color=always $realpath'
+
+# Use icons (if you have Nerd Fonts installed)
+zstyle ':completion:*' fzf-tab:complete use-icon-map yes
+
+
+# Enable coloring in results
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+
 
 # Set up the prompt
 eval "$(starship init zsh)"
@@ -27,9 +48,7 @@ setopt auto_cd
 # Alias for navigation
 alias b='cd ..'
 
-# Enable colors for lsd and other commands
-export CLICOLOR=1
-eval "$(dircolors -b ~/.config/lscolors/LS_COLORS)"
+
 
 
 
