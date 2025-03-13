@@ -28,9 +28,23 @@ require("lazy").setup({
     --theme
     "ellisonleao/gruvbox.nvim",
 
+    {
+        "plasticboy/vim-markdown",
+        dependencies = { "godlygeek/tabular" }, -- Required for table formatting
+        config = function()
+            vim.g.vim_markdown_conceal = 1  -- Hide formatting markers
+            vim.g.vim_markdown_folding_disabled = 1  -- Prevent annoying auto-folding
+            vim.g.vim_markdown_new_list_item_indent = 0
+            vim.g.vim_markdown_strikethrough = 1
+            vim.g.vim_markdown_math = 1
+            vim.g.vim_markdown_auto_insert_bullets = 1
+            vim.g.vim_markdown_no_extensions_in_markdown = 1
+            vim.g.vim_markdown_toc_autofit = 1 -- Automatically resize TOC
+            vim.g.vim_markdown_task_lists = 1 -- Enable task list support
+            
+        end
+    }
     
-
-
 })
 
 -- Configure Lualine
