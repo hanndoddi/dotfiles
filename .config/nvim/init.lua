@@ -28,6 +28,9 @@ require("lazy").setup({
     --theme
     "ellisonleao/gruvbox.nvim",
 
+    
+
+
 })
 
 -- Configure Lualine
@@ -36,7 +39,9 @@ require('lualine').setup({
 })
 
 -- Enable line numbers
-vim.opt.number = true
+vim.opt.number = true          -- Enable absolute line number for the current line
+vim.opt.relativenumber = true  -- Enable relative line numbers for other lines
+
 
 -- Configure Dashboard
 local db = require('dashboard') 
@@ -103,11 +108,4 @@ end, 100)
 
 
 
-
-
-
-
-
-
-
-
+ 

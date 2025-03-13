@@ -225,7 +225,7 @@ alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} p
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh  # Enable fzf keybindings and completion
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh  # Enable fzf keybindings
 export FZF_DEFAULT_COMMAND='find . -type f'
-export FZF_DEFAULT_OPTS="--height 80% --border --preview 'if [ -d {} ]; then ls -lh --color=always {}; else batcat --color=always {}; fi'"
+export FZF_DEFAULT_OPTS="--height 50% --border --preview 'if [ -d {} ]; then ls -lh --color=always {}; else batcat --color=always {}; fi'"
 
 
 
