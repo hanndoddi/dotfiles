@@ -47,6 +47,23 @@ zstyle ':completion:*' fzf-preview \
 zstyle ':completion:*' fzf-tab:complete use-icon-map yes
 
 # =============================================
+#  Export
+# =============================================
+
+# Use batcat for man pages
+export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+export MANROFFOPT="-c"
+
+# Prevent accidental terminal freeze with Ctrl-S
+[[ $- == *i* ]] && stty -ixon
+
+# Standardize config/data locations
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# =============================================
 #  5. Set Up Prompt & Tools
 # =============================================
 
@@ -119,10 +136,85 @@ alias las='lsd -A'                 # Hidden files
 alias lls='lsd -l'                 # List
 
 # =============================================
+#  Functions
+# =============================================
+
+# Extract any archive type
+extract() {
+    for archive in "$@"; do
+        if [ -f "$archive" ]; then
+            case $archive in
+            *.tar.bz2) tar xvjf "$archive" ;;
+            *.tar.gz) tar xvzf "$archive" ;;
+            *.bz2) bunzip2 "$archive" ;;
+            *.rar) rar x "$archive" ;;
+            *.gz) gunzip "$archive" ;;
+            *.tar) tar xvf "$archive" ;;
+            *.tbz2) tar xvjf "$archive" ;;
+            *.tgz) tar xvzf "$archive" ;;
+            *.zip) unzip "$archive" ;;
+            *.Z) uncompress "$archive" ;;
+            *.7z) 7z x "$archive" ;;
+            *) echo "don't know how to extract '$archive'..." ;;
+            esac
+        else
+            echo "'$archive' is not a valid file!"
+        fi
+    done
+}
+
+# Search inside files recursively
+ftext() {
+    grep -iIHrn --color=always "$1" . | less -R
+}
+
+# Move a file and change into the directory
+mvg() { mv "$1" "$2" && cd "$2"; }
+
+# Copy a file and change into the directory
+cpg() { cp "$1" "$2" && cd "$2"; }
+
+# Create a directory and move into it
+mkdirg() { mkdir -p "$1" && cd "$1"; }
+
+# Go up multiple directory levels
+up() {
+    local d=""
+    limit=$1
+    for ((i = 1; i <= limit; i++)); do d=$d/..; done
+    d=$(echo $d | sed 's/^\///')
+    cd ${d:-..}
+}
+
+
+# =============================================
 #  10. Other Aliases
 # =============================================
 
+# using bat for batcat
 alias bat='batcat'
+
+# Alias's to modified commands
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='trash -v'
+alias mkdir='mkdir -p'
+alias ps='ps auxf'
+alias ping='ping -c 10'
+alias less='less -R'
+alias cls='clear'
+alias apt-get='sudo apt-get'
+alias multitail='multitail --no-repeat -c'
+alias freshclam='sudo freshclam'
+alias vi='nvim'
+alias svi='sudo vi'
+alias vis='nvim "+set si"'
+
+# Change directory aliases
+alias home='cd ~'
+
+# git - alias
+alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;"
 
 
 # =============================================
