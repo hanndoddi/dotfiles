@@ -63,6 +63,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
+# Nvim
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
 # =============================================
 #  5. Set Up Prompt & Tools
 # =============================================

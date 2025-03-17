@@ -120,6 +120,13 @@ vim.defer_fn(function()
 end, 100)
 
 
+-- disable pearl rugby
+
+vim.g.loaded_perl_provider = 0
+
+
+
+
 
 
  
