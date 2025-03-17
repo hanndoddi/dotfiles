@@ -1,15 +1,23 @@
 return {
+    -- Interactive checkboxes with orgmode
     {
-        "preservim/vim-markdown",
-        dependencies = { "godlygeek/tabular" },
-        config = function()
-            vim.g.vim_markdown_task_lists = 1
-            vim.g.vim_markdown_auto_insert_bullets = 1
-            vim.g.vim_markdown_folding_disabled = 1
-            vim.g.vim_markdown_strikethrough = 1
-            vim.g.vim_markdown_math = 1
-            vim.g.vim_markdown_toc_autofit = 1
-        end
-    }
-    
-}
+      "nvim-orgmode/orgmode",
+      config = function()
+        require("orgmode").setup({
+          org_todo_keywords = { "TODO", "|", "DONE" },
+          org_todo_keyword_faces = {
+            TODO = ":foreground #FF8800 :weight bold",
+            DONE = ":foreground #50FA7B :weight bold",
+          },
+        })
+      end,
+    },
+  
+    -- Auto-format bullets and checkboxes
+    {
+      "dkarter/bullets.vim",
+      ft = { "markdown", "text", "org" },
+    },
+  }
+  
+  
