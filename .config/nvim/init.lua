@@ -908,6 +908,14 @@ require('lazy').setup({
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'gruvbox'
+
+      -- Make transparency work in Kitty
+vim.cmd([[
+  hi Normal guibg=NONE ctermbg=NONE
+  hi NormalNC guibg=NONE ctermbg=NONE
+  hi EndOfBuffer guibg=NONE ctermbg=NONE
+  hi SignColumn guibg=NONE ctermbg=NONE
+]])
     end,
   },
 
