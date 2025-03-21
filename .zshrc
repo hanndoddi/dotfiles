@@ -234,3 +234,4 @@ export FZF_DEFAULT_OPTS="--height 50% --border --preview 'if [ -d {} ]; then ls 
 
 
 
+export PATH="$HOME/.platformio/penv/bin:$PATH"
