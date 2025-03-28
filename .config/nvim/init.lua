@@ -344,8 +344,12 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>m', group = '[M]icropython' },
       },
     },
+
+
+
   },
 
   -- NOTE: Plugins can specify dependencies.
@@ -916,15 +920,19 @@ require('lazy').setup({
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'gruvbox'
 
-      -- Make transparency work in Kitty
+      -- Make transparency work in Kitty and custom which key collors
 vim.cmd([[
   hi Normal guibg=NONE ctermbg=NONE
   hi NormalNC guibg=NONE ctermbg=NONE
   hi EndOfBuffer guibg=NONE ctermbg=NONE
   hi SignColumn guibg=NONE ctermbg=NONE
+  highlight WhichKey          guifg=#00ff00 guibg=NONE
+  highlight WhichKeyGroup     guifg=#ffaa00 guibg=NONE
+  highlight WhichKeyDesc      guifg=#6A7DE9 guibg=NONE
 ]])
     end,
   },
+
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
