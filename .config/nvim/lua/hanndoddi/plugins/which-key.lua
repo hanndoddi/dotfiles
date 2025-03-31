@@ -10,4 +10,20 @@ return {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     },
+    {
+      "echasnovski/mini.icons", -- Add this line to install mini.icons
+    },
   }
+
+  --{
+  --  "folke/which-key.nvim",
+  --  opts = function(_, opts)
+  --    local icons = require("mini.icons")
+  --    opts.icons = {
+  --      breadcrumb = icons.ui.ChevronRight,
+  --      separator = icons.ui.ChevronRight,
+  --      group = icons.ui.Circle,
+  --    }
+  --    return opts
+  --  end,
+  --}
