@@ -100,7 +100,12 @@ return {
             filetypes = { "arduino","ino" },
           })
         end,
-        
+        ["clangd"] = function()
+          lspconfig["clangd"].setup({
+            capabilities = capabilities,
+            filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "h", "hpp" },
+          })
+        end,
         ["svelte"] = function()
           -- configure svelte server
           lspconfig["svelte"].setup({
