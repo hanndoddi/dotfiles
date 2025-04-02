@@ -16,10 +16,10 @@ return {
       local present, wk = pcall(require, 'which-key')
       if present then
         wk.add {
-          { '<leader>s', icon = '', group = 'Splits' },
           { '<leader>t', group = 'Tabs' },
+          { '<leader>s', group = 'Splits', icon = '' },
           { '<leader>h', group = 'Git' },
-          { '<leader>e', group = 'Explorer' },
+          { '<leader>e', group = 'File Tree' },
           { '<leader>c', group = 'Code Action' },
           { '<leader>n', group = 'Search Highlight' },
           { '<leader>o', group = 'Org'},

@@ -66,6 +66,16 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # Nvim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
+
+# Set the default editor
+export EDITOR=nvim
+export VISUAL=nvim
+#alias pico='edit'
+#alias spico='sedit'
+#alias nano='edit'
+#alias snano='sedit'
+#alias vim='nvim'
+
 # =============================================
 #  5. Set Up Prompt & Tools
 # =============================================
