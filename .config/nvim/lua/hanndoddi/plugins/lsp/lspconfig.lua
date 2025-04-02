@@ -9,7 +9,6 @@ return {
     config = function()
       -- import lspconfig plugin
       local lspconfig = require("lspconfig")
-  
       -- import mason_lspconfig plugin
       local mason_lspconfig = require("mason-lspconfig")
   
@@ -85,6 +84,23 @@ return {
             capabilities = capabilities,
           })
         end,
+        ["arduino_language_server"] = function()
+          -- configure arduino language server
+          lspconfig["arduino_language_server"].setup({
+            capabilities = capabilities,
+            cmd = {
+            --  "/home/thorarinn/.local/share/nvim/mason/bin/arduino-language-server",
+              "arduino-language-server",
+              "-clangd", "/home/thorarinn/.local/share/nvim/mason/bin/clangd",
+              "-cli", "/home/thorarinn/bin/arduino-cli",
+              "-cli-config", "/home/thorarinn/.arduino15/arduino-cli.yaml",
+              "-fqbn", "arduino:avr:uno",
+              "-log", "debug",
+            },
+            filetypes = { "arduino","ino" },
+          })
+        end,
+        
         ["svelte"] = function()
           -- configure svelte server
           lspconfig["svelte"].setup({
