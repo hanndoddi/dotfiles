@@ -1,7 +1,7 @@
 return {
     "jim-at-jibba/micropython.nvim",
     dependencies = { "akinsho/toggleterm.nvim", "stevearc/dressing.nvim" },
-    cmd = { "MicropythonRun", "MicropythonConnect" }, -- Load only when these commands are used
+--    cmd = { "MicropythonRun", "MicropythonConnect" }, -- Load only when these commands are used
     config = function()
         vim.keymap.set("n", "<leader>mr", function()
             require("micropython_nvim").run()
