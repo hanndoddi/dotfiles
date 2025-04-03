@@ -50,7 +50,10 @@ require('lualine').setup {
     lualine_c = {
       '%=', --[[ add your center components here in place of this comment ]]
     },
-    lualine_x = {},
+    lualine_x = {{
+      lazy_status.updates,
+      cond = lazy_status.has_updates,
+      color = { fg = "#ff9e64" },},},
     lualine_y = {  'filetype', 'fileformat', 'encoding', 'progress' },
     lualine_z = {
       { 'location', separator = { right = '' }, left_padding = 2 },
