@@ -26,8 +26,15 @@ return {
       palette_overrides = {},
       overrides = {},
       dim_inactive = false,
-      transparent_mode = true,
+      transparent_mode = false,
     })
     vim.cmd("colorscheme gruvbox")
+
+    vim.cmd([[
+  hi Normal guibg=NONE ctermbg=NONE
+  hi NormalNC guibg=NONE ctermbg=NONE
+  hi EndOfBuffer guibg=NONE ctermbg=NONE
+  hi SignColumn guibg=NONE ctermbg=NONE
+]])
   end,
 }
