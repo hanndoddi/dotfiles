@@ -23,10 +23,11 @@ return {
           { '<leader>c', group = 'Code Action' },
           { '<leader>n', group = 'Search Highlight' },
           { '<leader>o', group = 'Org', icon = ""},
-          { '<leader>r', group = 'LSP'},
+          { '<leader>r', group = 'LSP', icon = ""},
           { '<leader>w', group = 'Session'},
           { '<leader>i', group = 'IDE', icon = ""},
           { '<leader>ip', group = 'PlatformIO', icon = ""},
+          { '<leader>æ', name = 'Terminal', icon = ""},
         }
       end
     end,
