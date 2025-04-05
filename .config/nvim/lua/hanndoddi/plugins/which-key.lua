@@ -17,7 +17,7 @@ return {
       if present then
         wk.add {
           { '<leader>t', group = 'Tabs' },
-          { '<leader>s', group = 'Splits', icon = '' },
+          { '<leader>s', group = 'Splits', icon = " "},
           { '<leader>h', group = 'Git' },
           { '<leader>e', group = 'File Tree' },
           { '<leader>c', group = 'Code Action' },
@@ -25,6 +25,8 @@ return {
           { '<leader>o', group = 'Org'},
           { '<leader>r', group = 'LSP'},
           { '<leader>w', group = 'Session'},
+          { '<leader>i', group = 'IDE' },
+          { '<leader>ip', group = 'PlatformIO' },
         }
       end
     end,
