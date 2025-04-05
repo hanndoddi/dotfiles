@@ -23,7 +23,7 @@ keymap.set('n', '<leader>tp', '<cmd>tabp<CR>', { desc = 'Go to previous tab' }) 
 keymap.set('n', '<leader>tf', '<cmd>tabnew %<CR>', { desc = 'Open current buffer in new tab' }) --  move current buffer to new tab
 
 -- terminal
-vim.keymap.set('n', '<leader>æ', '<cmd>ToggleTerm<CR>', { desc = 'Toggle Terminal' })
+vim.keymap.set('n', '<leader>æ', '<cmd>ToggleTerm<CR>', { desc = 'Toggle Terminal', })
 
 -- moving lines up and down using alt + j and k
 vim.keymap.set('n', '<A-j>', ':m .+1<CR>==') -- move line up(n)

@@ -11,22 +11,22 @@ return {
       vim.cmd [[
         highlight WhichKeyGroup guifg=#ffaa00 guibg=NONE 
       ]]
-
+ 
       -- which-key group names
       local present, wk = pcall(require, 'which-key')
       if present then
         wk.add {
           { '<leader>t', group = 'Tabs' },
-          { '<leader>s', group = 'Splits', icon = " "},
+          { '<leader>s', group = 'Splits', icon = ""},
           { '<leader>h', group = 'Git' },
           { '<leader>e', group = 'File Tree' },
           { '<leader>c', group = 'Code Action' },
           { '<leader>n', group = 'Search Highlight' },
-          { '<leader>o', group = 'Org'},
+          { '<leader>o', group = 'Org', icon = ""},
           { '<leader>r', group = 'LSP'},
           { '<leader>w', group = 'Session'},
-          { '<leader>i', group = 'IDE' },
-          { '<leader>ip', group = 'PlatformIO' },
+          { '<leader>i', group = 'IDE', icon = ""},
+          { '<leader>ip', group = 'PlatformIO', icon = ""},
         }
       end
     end,
