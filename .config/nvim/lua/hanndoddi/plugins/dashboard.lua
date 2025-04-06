@@ -40,7 +40,7 @@ return {
           shortcut = {
             { desc = '📂 Files', key = '1', action = 'Telescope find_files' },
             { desc = '📜 New File', key = '2', action = 'ene | startinsert' },
-            { desc = '🛠️ Config', key = '3', action = 'edit ~/.config/nvim/init.lua' },
+            { desc = '🛠️ Config', key = '3', action = 'edit ~/.config/nvim/lua/hanndoddi/' },
             { desc = '❌ Quit', key = '4', action = 'qa' },
           },
           footer = {

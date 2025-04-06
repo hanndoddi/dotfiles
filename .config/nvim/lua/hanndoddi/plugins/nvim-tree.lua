@@ -48,6 +48,9 @@ return {
           return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
         end
 
+        -- first, apply default keymaps
+  api.config.mappings.default_on_attach(bufnr)
+
         vim.keymap.set('n', 'l', api.node.open.edit, opts("Open"))
         vim.keymap.set('n', '<CR>', api.node.open.edit, opts("Open (Enter)"))
         vim.keymap.set('n', 'h', api.node.open.edit, opts("Open"))
