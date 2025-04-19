@@ -17,6 +17,7 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 
 # Autosuggestions based on history
 zinit light zsh-users/zsh-autosuggestions
+bindkey '^l' autosuggest-accept
 
 # Enhanced completion system
 zinit wait lucid for \
@@ -25,6 +26,9 @@ zinit wait lucid for \
 
 # FZF-powered tab completion
 zinit light Aloxaf/fzf-tab
+# Make ctrl-l behave like Enter (accept)
+zstyle ':fzf-tab:*' fzf-bindings 'ctrl-l:accept'
+
 
 # =============================================
 #  4. Enable Colors & Theming
