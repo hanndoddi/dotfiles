@@ -237,6 +237,8 @@ alias lg='lazygit'
 # for fun
 alias terminaldoom="~/github/terminal-doom && zig-out/bin/terminal-doom"
 
+bindkey '^G' clear-screen
+
 # =============================================
 #  11. config
 # =============================================
@@ -245,7 +247,12 @@ alias terminaldoom="~/github/terminal-doom && zig-out/bin/terminal-doom"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh  # Enable fzf keybindings and completion
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh  # Enable fzf keybindings
 export FZF_DEFAULT_COMMAND='find . -type f'
-export FZF_DEFAULT_OPTS="--height 50% --border --preview 'if [ -d {} ]; then ls -lh --color=always {}; else batcat --color=always {}; fi'"
+export FZF_DEFAULT_OPTS="--height 50% --border \
+--bind=ctrl-l:accept \
+--preview '[[ -f {} ]] && batcat --color=always {} || [[ -d {} ]] && ls -lh --color=always {}'"
+export FZF_CTRL_R_OPTS='--preview ""'
+
+
 
 
 
