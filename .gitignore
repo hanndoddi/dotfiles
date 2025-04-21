@@ -1,0 +1,7 @@
+# Rofi runtime/cache files
+.local/share/rofi/
+
+# Thumbnails, logs, temp files
+.cache/
+.Thumbs.db
+

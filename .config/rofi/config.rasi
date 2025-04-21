@@ -1,0 +1,18 @@
+@theme "/usr/share/rofi/themes/Monokai.rasi"
+//@theme "/dev/null"
+
+configuration {
+  // Unbind the default conflicting actions
+  kb-remove-to-eol:       "";
+  kb-mode-complete:       "";
+  kb-accept-entry:        "";  // We’ll rebind it just below
+
+  // Remap navigation and enter
+  kb-row-down:        "Down,Control+j";
+  kb-row-up:          "Up,Control+k";
+  kb-accept-entry:    "Return,Control+l";
+  kb-cancel:          "Escape,Super_L";
+  show-icons: true;
+  font: "JetBrainsMono Nerd Font 12";
+}
+
