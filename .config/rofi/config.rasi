@@ -1,5 +1,6 @@
-@theme "/usr/share/rofi/themes/Monokai.rasi"
+//theme "/usr/share/rofi/themes/Monokai.rasi"
 //@theme "/dev/null"
+@theme "theme/monokai-custom.rasi"
 
 configuration {
   // Unbind the default conflicting actions
@@ -13,6 +14,12 @@ configuration {
   kb-accept-entry:    "Return,Control+l";
   kb-cancel:          "Escape,Super_L";
   show-icons: true;
-  font: "JetBrainsMono Nerd Font 12";
+  font: "JetBrainsMono Nerd Font 14";
+  modi: "drun,window,run,combi";
+  //width: 25;
+	//icon-theme: "papirus";
+	//lines: 10;
+	//fake-transparency: true;
+	sidebar-mode: true;
 }
 
