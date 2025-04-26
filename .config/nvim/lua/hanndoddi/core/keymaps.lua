@@ -32,3 +32,10 @@ keymap.set("n", "<leader>ipl", "<cmd>Piolib<CR>", { desc = "PIO Library" })
 keymap.set("n", "<leader>ipc", "<cmd>Piocmd<CR>", { desc = "PIO Command" })
 keymap.set("n", "<leader>ipm", "<cmd>Piomon<CR>", { desc = "PIO Serial Monitor" })
 keymap.set("n", "<leader>ipd", "<cmd>Piodebug<CR>", { desc = "PIO Debug" })
+
+
+-- Don't yank when deleting
+vim.keymap.set("n", "d", '"_d')
+vim.keymap.set("n", "dd", '"_dd')
+vim.keymap.set("n", "x", '"_x')
+vim.keymap.set("v", "d", '"_d')
