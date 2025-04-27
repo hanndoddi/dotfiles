@@ -48,7 +48,7 @@ require('lualine').setup {
     lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
     lualine_b = { 'filename', 'branch','diff','diagnostics' },
     lualine_c = {
-      '%=', --[[ add your center components here in place of this comment ]]
+      '%=', 'datetime', --[[ add your center components here in place of this comment ]]
     },
     lualine_x = {{
       lazy_status.updates,
