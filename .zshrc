@@ -199,6 +199,9 @@ alias terminaldoom="~/github/terminal-doom && zig-out/bin/terminal-doom"
 
 bindkey '^G' clear-screen
 
+
+alias ya='yazi'
+
 # =============================================
 # 13. FZF Configuration
 # =============================================
