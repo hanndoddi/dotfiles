@@ -35,6 +35,8 @@ return {
   hi NormalNC guibg=NONE ctermbg=NONE
   hi EndOfBuffer guibg=NONE ctermbg=NONE
   hi SignColumn guibg=NONE ctermbg=NONE
+   highlight StatusLine guibg=NONE
+   highlight StatusLineNC guibg=NONE
 ]])
   end,
 }
