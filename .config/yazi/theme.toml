@@ -1,166 +1,159 @@
-# Сolor palette: https://stephango.com/flexoki
-# ---
-# black       "#100F0F" bg
-# base-950    "#1C1B1A" bg-2
-# base-900    "#282726" ui
-# base-850    "#343331" ui-2
-# base-800    "#403E3C" ui-3
-# base-700    "#575653" tx-3
-# base-500    "#878580" tx-2
-# base-200    "#CECDC3" tx
-# red-400     "#D14D41" re
-# orange-400  "#DA702C" or
-# yellow-400  "#D0A215" ye
-# yellow-600  "#AD8301" ye-2
-# green-400   "#879A39" gr
-# cyan-400    "#3AA99F" cy
-# cyan-600    "#24837B" cy-2
-# cyan-700    "#1C6C66" cy-700
-# cyan-900    "#122F2C" cy-900
-# blue-400    "#4385BE" bl
-# purple-400  "#8B7EC8" pu
-# magenta-400 "#CE5D97" ma
+#[flavor]
+# dark = "gruvbox"
+
+# vim:fileencoding=utf-8:foldmethod=marker
+
+# : Manager {{{
 
 [manager]
-cwd = { fg = "#CECDC3", bold = true } # tx
+cwd = { fg = "#83a598" }
 
 # Hovered
-hovered = { bg = "#1C1B1A" } # bg-2
+hovered         = { fg = "#282828", bg = "#83a598" }
 preview_hovered = { underline = true }
 
 # Find
-find_keyword = { fg = "#AD8301", reversed = true } # ye-2
-find_position = { fg = "#575653", bold = true, italic = true } # tx-3
+find_keyword  = { fg = "#b8bb26", italic = true }
+find_position = { fg = "#fe8019", bg = "reset", italic = true }
 
 # Marker
-marker_copied = { fg = "#879A39", bg = "#879A39" } # gr, gr
-marker_cut = { fg = "#D14D41", bg = "#D14D41" } # re, re
-marker_marked = { fg = "#1C6C66", bg = "#1C6C66" } # cy-700, cy-700
-marker_selected = { fg = "#3AA99F", bg = "#3AA99F" } # cy, cy
+marker_selected = { fg = "#b8bb26", bg = "#b8bb26" }
+marker_copied   = { fg = "#b8bb26", bg = "#b8bb26" }
+marker_cut      = { fg = "#fb4934", bg = "#fb4934" }
 
 # Tab
-tab_active = { fg = "#CECDC3", bg = "#403E3C", bold = true } # tx, ui-3
-tab_inactive = { fg = "#878580", bg = "#282726" } # tx-2, ui
-tab_width = 1
-
-# Count
-count_copied = { fg = "#879A39", bold = true, reversed = true } # gr
-count_cut = { fg = "#D14D41", bold = true, reversed = true } # re
-count_selected = { fg = "#3AA99F", bold = true, reversed = true } # cy
+tab_active   = { fg = "#282828", bg = "#504945" }
+tab_inactive = { fg = "#a89984", bg = "#3c3836" }
+tab_width    = 1
 
 # Border
 border_symbol = "│"
-border_style = { fg = "#282726" } # ui
+border_style  = { fg = "#665c54" }
 
-[mode]
-# Normal mode
-normal_main = { fg = "#CECDC3", bg = "#403E3C", bold = true } # tx, ui-3
-normal_alt = { fg = "#878580", bg = "#282726" } # tx-2, ui
+# Highlighting
+# syntect_theme = "~/.config/yazi/Gruvbox-Dark.tmTheme"
 
-# Select mode
-select_main = { fg = "#100F0F", bg = "#3AA99F", bold = true } # bg, cy
-select_alt = { fg = "#3AA99F", bg = "#122F2C" } # cy, cy-900
+# : }}}
 
-# Unset mode
-unset_main = { fg = "#100F0F", bg = "#3AA99F", bold = true } # bg, cy
-unset_alt = { fg = "#3AA99F", bg = "#122F2C" } # cy, cy-900
+
+# : Status {{{
 
 [status]
-overall = { fg = "#CECDC3" } # tx
+separator_open  = ""
+separator_close = ""
+separator_style = { fg = "#3c3836", bg = "#3c3836" }
 
-# Permissions
-perm_type = { fg = "#4385BE" } # bl
-perm_read = { fg = "#D0A215" } # ye
-perm_write = { fg = "#D14D41" } # re
-perm_exec = { fg = "#879A39" } # gr
-perm_sep = { fg = "#878580" } # tx-2
 
 # Progress
-progress_label = { fg = "#100F0F" } # bg
-progress_normal = { fg = "#3AA99F", bg = "#1C6C66" } # cy, cy-700
-progress_error = { bg = "#D14D41" } # re
+progress_label  = { fg = "#ebdbb2", bold = true }
+progress_normal = { fg = "#504945", bg = "#3c3836" }
+progress_error  = { fg = "#fb4934", bg = "#3c3836" }
 
-[which]
-cols = 3
-mask = { bg = "#1C1B1A" } # bg-2
-cand = { fg = "#D0A215", bold = true } # ye
-rest = { fg = "#D0A215", italic = true } # ye
-desc = { fg = "#575653" } # tx-3
-separator = " "
-separator_style = { }
+# Permissions
+permissions_t = { fg = "#504945" }
+permissions_r = { fg = "#b8bb26" }
+permissions_w = { fg = "#fb4934" }
+permissions_x = { fg = "#b8bb26" }
+permissions_s = { fg = "#665c54" }
 
-[confirm]
-border = { fg = "#403E3C" } # ui-3
-title = { fg = "#575653", bold = true } # tx-3
-content = { fg = "#CECDC3", bold = true } # tx
-list = { fg = "#CECDC3" } # tx
-btn_yes = { fg = "#CECDC3", bg = "#403E3C", bold = true } # tx, ui-3
-btn_no = { fg = "#878580", bg = "#282726" } # tx-2, ui
+# : }}}
 
-[spot]
-border = { fg = "#403E3C" } # ui-3
-title = { fg = "#575653", bold = true } # tx-3
-tbl_col = { fg = "#878580" } # tx-2
-tbl_cell = { bg = "#1C1B1A" } # bg-2
 
-[notify]
-# Notification title
-title_info = { fg = "#4385BE" } # bl
-title_warn = { fg = "#DA702C" } # or
-title_error = { fg = "#D14D41" } # re
+# : mode {{{
 
-[pick]
-border = { fg = "#403E3C", bold = true } # ui-3
-active = { fg = "#CECDC3" } # tx
-inactive = { fg = "#878580" } # tx-2
+[mode]
+normal_main = { fg = "#282828", bg = "#A89984", bold = true }
+normal_alt = { fg = "#282828", bg = "#A89984", bold = true }
+
+select_main = { fg = "#282828", bg = "#b8bb26", bold = true }
+select_alt = { fg = "#282828", bg = "#b8bb26", bold = true }
+
+unset_main  = { fg = "#282828", bg = "#d3869b", bold = true }
+unset_alt  = { fg = "#282828", bg = "#d3869b", bold = true }
+
+# : }}}
+
+
+# : Input {{{
 
 [input]
-border = { fg = "#403E3C" } # ui-3
-title = { fg = "#575653", bold = true } # tx-3
-value = { fg = "#CECDC3" } # tx
-selected = { bg = "#1C1B1A" } # bg-2
+border   = { fg = "#bdae93" }
+title    = {}
+value    = {}
+selected = { reversed = true }
 
-[cmp]
-border = { fg = "#403E3C", bold = true } # ui-3
-active = { fg = "#878580", bg = "#1C1B1A" } # tx-2, bg-2
-inactive = { fg = "#878580" } # tx-2
+# : }}}
+
+
+# : Select {{{
+
+[select]
+border   = { fg = "#504945" }
+active   = { fg = "#fe8019" }
+inactive = {}
+
+# : }}}
+
+
+# : Tasks {{{
 
 [tasks]
-border = { fg = "#403E3C" } # ui-3
-title = { fg = "#575653", bold = true } # tx-3
-hovered = { bg = "#1C1B1A" } # bg-2
+border  = { fg = "#504945" }
+title   = {}
+hovered = { underline = true }
+
+# : }}}
+
+
+# : Which {{{
+
+[which]
+mask            = { bg = "#3c3836" }
+cand            = { fg = "#83a598" }
+rest            = { fg = "#928374" }
+desc            = { fg = "#fe8019" }
+separator       = "  "
+separator_style = { fg = "#504945" }
+
+# : }}}
+
+
+# : Help {{{
 
 [help]
-on = { fg = "#4385BE" } # bl
-run = { fg = "#3AA99F" } # cy
-desc = { fg = "#575653", italic = true } # tx-3
-hovered = { bg = "#1C1B1A" } # bg-2
-footer = { fg = "#CECDC3", bg = "#282726", bold = true } # tx, ui
+on      = { fg = "#fe8019" }
+exec    = { fg = "#83a598" }
+desc    = { fg = "#928374" }
+hovered = { bg = "#504945", bold = true }
+footer  = { fg = "#3c3836", bg = "#a89984" }
+
+# : }}}
+
+
+# : File-specific styles {{{
 
 [filetype]
+
 rules = [
-  # Images
-  { mime = "image/*", fg = "#8B7EC8" }, # pu
+    # Images
+    { mime = "image/*", fg = "#83a598" },
 
-  # Media
-  { mime = "video/*", fg = "#D0A215" }, # ye
-  { mime = "audio/*", fg = "#D0A215" }, # ye
+    # Videos
+    { mime = "video/*", fg = "#b8bb26" },
+    { mime = "audio/*", fg = "#b8bb26" },
 
-  # Broken symbolic link
-  { name = "*", is = "orphan", fg = "#575653", crossed = true }, # tx-3
-  { name = "*/", is = "orphan", fg = "#575653", crossed = true }, # tx-3
+    # Archives
+    { mime = "application/zip",             fg = "#fe8019" },
+    { mime = "application/gzip",            fg = "#fe8019" },
+    { mime = "application/x-tar",           fg = "#fe8019" },
+    { mime = "application/x-bzip",          fg = "#fe8019" },
+    { mime = "application/x-bzip2",         fg = "#fe8019" },
+    { mime = "application/x-7z-compressed", fg = "#fe8019" },
+    { mime = "application/x-rar",           fg = "#fe8019" },
 
-  # Symbolic links
-  { name = "*", is = "link", fg = "#3AA99F" }, # cy
-  { name = "*/", is = "link", fg = "#3AA99F" }, # cy
-
-  # Executable
-  { name = "*", is = "exec", fg = "#879A39" }, # gr
-
-  # Empty files
-  { mime = "inode/empty", fg = "#575653" }, # tx-3
-
-  # Fallback
-  { name = "*", fg = "#878580" }, # tx-2
-  { name = "*/", fg = "#CECDC3" } # tx
+    # Fallback
+    { name = "*", fg = "#a89984" },
+    { name = "*/", fg = "#83a598" }
 ]
+
+# : }}}
