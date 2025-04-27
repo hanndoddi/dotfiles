@@ -51,9 +51,8 @@ zstyle ':completion:*' fzf-tab:complete use-icon-map yes
 #  5. Export Environment Variables
 # =============================================
 
-# Important: platformio added back
-export PATH="$HOME/.platformio/penv/bin:$PATH"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+. "$HOME/.cargo/env"
 
 # Use batcat for man pages
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
@@ -69,6 +68,9 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # Set the default editor
 export EDITOR=nvim
 export VISUAL=nvim
+
+# other
+export PATH="$HOME/.platformio/penv/bin:$PATH"
 
 # =============================================
 #  6. Set Up Prompt & Tools

@@ -2,9 +2,13 @@ vim.g.mapleader = ' '
 
 local keymap = vim.keymap -- for conciseness
 
-keymap.set('i', 'jj', '<ESC>', { desc = 'Exit insert mode with jk' })
+keymap.set('i', 'ææ', '<ESC>', { desc = 'Exit insert mode with jj' })
+keymap.set('n', 'ææ', '<ESC>', { desc = 'Exit insert mode with jj' })
 
 keymap.set('n', '<leader>n', ':nohl<CR>', { desc = 'Clear search highlights' })
+
+
+keymap.set('n', '<leader>b', '<cmd>Dashboard<CR>', { desc = 'Dashboard' })
 
 -- increment/decrement numbers
 -- keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment

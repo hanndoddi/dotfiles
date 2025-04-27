@@ -661,3 +661,4 @@ export PATH="$HOME/bin:$PATH"
 
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
+. "$HOME/.cargo/env"
