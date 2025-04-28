@@ -1,6 +1,6 @@
 
 [manager]
-ratio          = [ 2, 4, 3 ]
+ratio          = [ 2, 3, 4 ]
 show_hidden   = true
 show_symlinks = true
 linemode = "size_and_mtime"
