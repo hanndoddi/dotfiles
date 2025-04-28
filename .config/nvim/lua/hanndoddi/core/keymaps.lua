@@ -8,7 +8,7 @@ keymap.set('n', 'ææ', '<ESC>', { desc = 'Exit insert mode with jj' })
 keymap.set('n', '<leader>n', ':nohl<CR>', { desc = 'Clear search highlights' })
 
 
-keymap.set('n', '<leader>b', '<cmd>Dashboard<CR>', { desc = 'Dashboard' })
+keymap.set('n', '<leader>1', '<cmd>Dashboard<CR>', { desc = 'Dashboard' })
 
 -- increment/decrement numbers
 -- keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
@@ -43,3 +43,13 @@ vim.keymap.set("n", "d", '"_d')
 vim.keymap.set("n", "dd", '"_dd')
 vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("v", "d", '"_d')
+
+
+-- buffer
+
+-- Buffers
+vim.keymap.set('n', '<leader>9', ':bnext<CR>', { silent = true, desc = "Next Buffer" })
+vim.keymap.set('n', '<leader>8', ':bprevious<CR>', { silent = true, desc = "Previous Buffer" })
+vim.keymap.set('n', '<leader>0', '<C-^>', { silent = true, desc = "Last Buffer" })
+
+
