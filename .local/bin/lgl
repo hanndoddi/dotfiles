@@ -1,0 +1,11 @@
+
+#!/bin/bash
+
+# Launch lazygit in a new Kitty window in the current directory
+kitty @ launch --type=window --cwd="$(pwd)" --title="lazygit-log" lazygit log
+
+# Give it a moment to open
+sleep 0.2
+
+# Send two '+' keypresses to open patch view of top two commits
+kitty @ send-text --match title:lazygit-log "++"
