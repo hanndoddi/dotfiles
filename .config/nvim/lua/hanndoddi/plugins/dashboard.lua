@@ -43,6 +43,7 @@ return {
           { desc = ' Config', key = '3', action = 'edit ~/.config/nvim/lua/hanndoddi/' },
           { desc = '󰮠 GitLab', key = '4', action = 'edit ~/gitlab/' },
           { desc = '󱃕 FabIsa Masterplan', key = '5', action = 'edit ~/github/master_plan_2025/' },
+          { desc = ' Week Plan', key = '6', action = 'edit ~/github/Project_Management_Test/weeks_2025_todo/' },
          -- { desc = '❌ Quit', key = '4', action = 'qa' },
         },
         project = { enable = true, limit = 4, icon = 'your icon', label = '', action = 'Telescope find_files cwd=' },
