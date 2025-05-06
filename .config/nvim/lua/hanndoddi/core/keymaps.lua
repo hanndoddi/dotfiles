@@ -53,3 +53,20 @@ vim.keymap.set('n', '<leader>8', ':bprevious<CR>', { silent = true, desc = "Prev
 vim.keymap.set('n', '<leader>0', '<C-^>', { silent = true, desc = "Last Buffer" })
 
 
+-- Toggle spell checking manually
+vim.keymap.set('n', '<leader>cs', ':set spell!<CR>', { noremap = true, silent = true, desc = "Toggle Spell Checking" })
+
+-- Remap [s and ]s for easier spelling error navigation
+vim.keymap.set('n', '<leader>7', ']s', { noremap = true, silent = true, desc = "Next Spelling Error" })
+vim.keymap.set('n', '<leader>6', '[s', { noremap = true, silent = true, desc = "Previous Spelling Error" })
+
+
+
+
+
+
+
+  
+ 
+
+

@@ -41,3 +41,20 @@ opt.swapfile = false
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 opt.confirm = true
+
+--  spell for text/markdown/gitcommit files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "text", "gitcommit" },
+  callback = function()
+    vim.opt.spell = true
+    vim.opt.spelllang = { 'en_us' }
+  end,
+})
+
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.showbreak = '↪ '
+
+
+
