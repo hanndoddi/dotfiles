@@ -71,11 +71,18 @@ return {
   
       -- Change the Diagnostic symbols in the sign column (gutter)
       -- (not in youtube nvim video)
-      local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-      end
+
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = " ",
+      [vim.diagnostic.severity.WARN]  = " ",
+      [vim.diagnostic.severity.INFO]  = " ",
+      [vim.diagnostic.severity.HINT]  = "󰠠 ",
+    },
+  },
+})
+
   
       mason_lspconfig.setup({
         -- default handler for installed servers
@@ -84,7 +91,7 @@ return {
             capabilities = capabilities,
           })
         end,
-         ["arduino_language_server"] = function()
+        ["arduino_language_server"] = function()
           -- configure arduino language server
           lspconfig["arduino_language_server"].setup({
             capabilities = capabilities,
