@@ -1,5 +1,6 @@
 return {
   'nvimdev/dashboard-nvim',
+  event = "VimEnter",
   config = function()
     local db = require 'dashboard'
     db.setup {
@@ -59,5 +60,12 @@ return {
         },
       },
     }
+  -- defer plugin loading to improve dashboard load time
+vim.api.nvim_create_autocmd("User", {
+  pattern = "DashboardReady",
+  callback = function()
+    require("lazy").load({ wait = false })
+  end,
+})
   end,
 }
