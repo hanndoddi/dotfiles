@@ -37,6 +37,12 @@ return {
   hi SignColumn guibg=NONE ctermbg=NONE
    highlight StatusLine guibg=NONE
    highlight StatusLineNC guibg=NONE
+  highlight! link DiagnosticSignWarn DiagnosticWarn
+  highlight! link DiagnosticSignError DiagnosticError
+  highlight! link DiagnosticSignInfo DiagnosticInfo
+  highlight! link DiagnosticSignHint DiagnosticHint
+
+
 ]])
   end,
 }
