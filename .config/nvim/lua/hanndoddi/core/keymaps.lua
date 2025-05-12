@@ -62,12 +62,15 @@ vim.keymap.set('n', '<leader>7', ']s', { noremap = true, silent = true, desc = "
 vim.keymap.set('n', '<leader>6', '[s', { noremap = true, silent = true, desc = "Previous Spelling Error" })
 
 
+vim.keymap.set("n", "<leader>icr", function()
+  vim.cmd("split | terminal ./main")
+end, { desc = "Run C binary in terminal split" })
 
+vim.keymap.set("n", "<leader>icc", function()
+  vim.cmd("!gcc % -o main")
+end, { desc = "Compile C file" })
 
-
-
-
-  
- 
-
-
+vim.keymap.set("n", "<leader>icx", function()
+  vim.cmd("!gcc % -o main && echo 'Compiled.'")
+  vim.cmd("split | terminal ./main")
+end, { desc = "Compile and run C in terminal split" })
