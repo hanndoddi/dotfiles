@@ -1,10 +1,8 @@
 return {
-  "ellisonleao/gruvbox.nvim",
+  'ellisonleao/gruvbox.nvim',
   priority = 1000,
   config = function()
-
-
-    require("gruvbox").setup({
+    require('gruvbox').setup {
       terminal_colors = true, -- add neovim terminal colors
       undercurl = true,
       underline = false,
@@ -22,27 +20,25 @@ return {
       invert_tabline = false,
       invert_intend_guides = false,
       inverse = true, -- invert background for search, diffs, statuslines and errors
-      contrast = "", -- can be "hard", "soft" or empty string
+      contrast = '', -- can be "hard", "soft" or empty string
       palette_overrides = {},
       overrides = {},
       dim_inactive = false,
       transparent_mode = false,
-    })
-    vim.cmd("colorscheme gruvbox")
+    }
+    vim.cmd 'colorscheme gruvbox'
 
-    vim.cmd([[
+    vim.cmd [[
   hi Normal guibg=NONE ctermbg=NONE
   hi NormalNC guibg=NONE ctermbg=NONE
   hi EndOfBuffer guibg=NONE ctermbg=NONE
   hi SignColumn guibg=NONE ctermbg=NONE
-   highlight StatusLine guibg=NONE
-   highlight StatusLineNC guibg=NONE
+  highlight StatusLine guibg=NONE
+  highlight StatusLineNC guibg=NONE
   highlight! link DiagnosticSignWarn DiagnosticWarn
   highlight! link DiagnosticSignError DiagnosticError
   highlight! link DiagnosticSignInfo DiagnosticInfo
   highlight! link DiagnosticSignHint DiagnosticHint
-
-
-]])
+  ]]
   end,
 }
