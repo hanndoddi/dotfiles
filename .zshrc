@@ -78,6 +78,7 @@ export PATH="$HOME/.platformio/penv/bin:$PATH"
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+source ~/.local/bin/construct
 
 # =============================================
 #  7. History Settings
@@ -199,15 +200,15 @@ alias vis='nvim "+set si"'
 
 alias home='cd ~'
 
-alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;"
 alias lg='lazygit'
+alias ya='yazi'
 
-alias terminaldoom="~/github/terminal-doom && zig-out/bin/terminal-doom"
-
+alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;"
 bindkey '^G' clear-screen
 
-
-alias ya='yazi'
+alias terminaldoom="~/github/terminal-doom && zig-out/bin/terminal-doom"
+alias theconstruct="cd ~/theconstruct/"
+alias cs="cd ~/theconstruct/"
 
 # =============================================
 # 13. FZF Configuration
