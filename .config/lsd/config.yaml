@@ -1,0 +1,4 @@
+color:
+  when: always
+  ls_colors: true
+
