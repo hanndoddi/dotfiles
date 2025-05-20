@@ -74,3 +74,31 @@ vim.keymap.set("n", "<leader>icx", function()
   vim.cmd("!gcc % -o main && echo 'Compiled.'")
   vim.cmd("split | terminal ./main")
 end, { desc = "Compile and run C in terminal split" })
+
+
+vim.keymap.set("n", "<leader>id", function()
+  local util = require("plenary.path")
+  local cwd = vim.fn.getcwd()
+  local root = cwd
+
+  -- Find directory that contains mkdocs.yml
+  while root ~= "/" do
+    if util.new(root .. "/mkdocs.yml"):exists() then
+      break
+    end
+    root = util.new(root):parent().filename
+  end
+
+  if root == "/" then
+    vim.notify("mkdocs.yml not found in parent directories", vim.log.levels.ERROR)
+    return
+  end
+
+  local Terminal = require("toggleterm.terminal").Terminal
+  Terminal:new({
+    cmd = "cd " .. root .. " && source venv/bin/activate && mkdocs serve",
+    -- hidden = true,
+    -- direction = "float",
+    close_on_exit = false,
+  }):toggle()
+end, { desc = "Serve MkDocs from root" })
