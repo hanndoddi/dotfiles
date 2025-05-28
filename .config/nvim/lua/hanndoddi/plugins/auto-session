@@ -17,3 +17,6 @@ return {
     keymap.set("n", "<leader>w1", "<cmd>q!<CR>", { desc = "quit no save" })
   end,
 }
+
+-- not using this plugin atm the moment 
+

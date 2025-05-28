@@ -45,6 +45,7 @@ return {
 
     mason_tool_installer.setup({
       ensure_installed = {
+        "clang-format", -- c/c++/ino formatter
         "prettier", -- prettier formatter
         "stylua", -- lua formatter
         "isort", -- python formatter

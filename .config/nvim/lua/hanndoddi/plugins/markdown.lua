@@ -24,5 +24,4 @@ return {
             vim.g.bullets_line_spacing = 1
         end,
     },
-    
 }

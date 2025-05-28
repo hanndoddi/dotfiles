@@ -20,6 +20,9 @@ return {
         liquid = { 'prettier' },
         lua = { 'stylua' },
         python = { 'isort', 'black' },
+        c = { 'clang_format' },
+        cpp = { 'clang_format' },
+        ino = { 'clang_format' },
       },
       format_on_save = nil,
     }

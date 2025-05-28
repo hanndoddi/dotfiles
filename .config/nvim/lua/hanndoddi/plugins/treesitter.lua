@@ -21,7 +21,7 @@ return {
         enable = true,
       },
       -- ensure these language parsers are installed
-      ensure_installed = {
+     ensure_installed = {
         "json",
         "javascript",
         "typescript",
@@ -42,6 +42,7 @@ return {
         "query",
         "vimdoc",
         "c",
+        "cpp",
       },
       incremental_selection = {
         enable = true,
