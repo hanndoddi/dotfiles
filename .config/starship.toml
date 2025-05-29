@@ -85,15 +85,17 @@ truncate_to_repo = false
 
 
 [directory.substitutions]
-"Documents" = "󰈙 doc"
-"Downloads" = "  dwl"
-"Music" = "󰝚 music"
-"Pictures" = "  img"
-"Developer" = "󰲋  dev"
-"github" = " GitHub"
-"gitlab" = " GitLab"
-"gitlocal" = "󰊢 GitLocal"
+"Documents" = "󰈙 Documents"
+"Downloads" = "  Downloads"
+"Music" = "󰝚 Music"
+"Pictures" = "  Pictures"
+"Developer" = "󰲋  Developer"
+"dev" = "󰲋  dev"
+"github" = " github"
+"gitlab" = " gitlab"
+"gitlocal" = "󰊢 gitlocal"
 ".config" = " .config"
+"theconstruct" ="󰘨 theconstruct"
 
 [git_branch]
 symbol = ""
