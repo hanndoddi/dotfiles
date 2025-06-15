@@ -107,3 +107,27 @@ vim.keymap.set('n', '<leader>t', function()
   end
   print('Diagnostics ' .. (diagnostics_enabled and 'enabled' or 'disabled'))
 end, { desc = 'Toggle diagnostics', silent = true })
+
+-- toggle indent on and off
+
+
+ 
+vim.keymap.set("n", "<leader>ui", function()
+  local ok, snacks = pcall(require, "snacks")
+  if not ok then
+    vim.notify("Snacks not loaded", vim.log.levels.WARN)
+    return
+  end
+  local i = snacks.indent
+  i.enabled = not i.enabled
+  if i.enabled then
+    i.enable()
+    vim.notify("Snacks indent: ON", vim.log.levels.INFO)
+  else
+    i.disable()
+    vim.notify("Snacks indent: OFF", vim.log.levels.INFO)
+  end
+end, { desc = "Toggle Snacks Indent" })
+
+
+
