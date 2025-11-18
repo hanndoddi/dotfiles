@@ -208,6 +208,8 @@ bindkey '^G' clear-screen
 alias wt='glow "$(ls -1t --color=never ~/github/Project_Management_Test/weeks_2025_todo/week_*.md | head -n 1)"'
 alias we='nvim "$(ls -1t --color=never ~/github/Project_Management_Test/weeks_2025_todo/week_*.md | head -n 1)"'
 
+alias wtt='glow "$(ls -1t --color=never ~/github/master_plan_2025/week_at_glance/week_*.md | head -n 1)"'
+alias wee='nvim "$(ls -1t --color=never ~/github/master_plan_2025/week_at_glance/week_*.md | head -n 1)"'
 
 
 alias terminaldoom="~/github/terminal-doom && zig-out/bin/terminal-doom"

@@ -1,6 +1,8 @@
 return {
   'nvimdev/dashboard-nvim',
-  event = "VimEnter",
+  -- event = "VimEnter",
+
+  priority = 1000,
   config = function()
     local db = require 'dashboard'
     db.setup {
