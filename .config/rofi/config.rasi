@@ -1,6 +1,5 @@
 //theme "/usr/share/rofi/themes/Monokai.rasi"
 //@theme "/dev/null"
-@theme "theme/monokai-custom.rasi"
 
 configuration {
   // Unbind the default conflicting actions
@@ -16,10 +15,11 @@ configuration {
   show-icons: true;
   font: "JetBrainsMono Nerd Font 14";
   modi: "drun,window,run,combi";
-  //width: 25;
+  width: 25;
 	//icon-theme: "papirus";
 	//lines: 10;
 	//fake-transparency: true;
 	sidebar-mode: true;
 }
 
+@theme "theme/arthur-mint.rasi"
