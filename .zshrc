@@ -1,3 +1,5 @@
+### zprof for debugging startup (uncomment line below and last line) ###
+# zmodload zsh/zprof
 
  ##----------------------------##
 ##  /\_/\    ╭──────────────╮   ##
@@ -5,9 +7,9 @@
 ##  > ^ <    ╰──────────────╯   ##
  ##----------------------------##
 # =============================================
-#  1. Load Completion System FIRST
+#  1. Load Completion System FIRST(not in use)
 # =============================================
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
 
 # =============================================
 #  2. Load Zinit (Plugin Manager)
@@ -52,7 +54,7 @@ zstyle ':completion:*' fzf-tab:complete use-icon-map yes
 # =============================================
 
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-. "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
 # Use batcat for man pages
 export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
@@ -230,5 +232,23 @@ export FZF_DEFAULT_OPTS="--height 50% --border \
 export FZF_CTRL_R_OPTS='--preview ""'
 
 export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# --- Lazy-load NVM on first use (speeds up zsh startup) ---
+_nvm_lazy_load() {
+  unset -f nvm node npm npx pnpm yarn corepack 2>/dev/null
+
+  [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+  # In zsh you usually do NOT need bash_completion; leave it off unless you know you need it.
+  # [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
+}
+
+nvm()      { _nvm_lazy_load; nvm "$@"; }
+node()     { _nvm_lazy_load; node "$@"; }
+npm()      { _nvm_lazy_load; npm "$@"; }
+npx()      { _nvm_lazy_load; npx "$@"; }
+pnpm()     { _nvm_lazy_load; pnpm "$@"; }
+yarn()     { _nvm_lazy_load; yarn "$@"; }
+corepack() { _nvm_lazy_load; corepack "$@"; }
+
+
+### zprof for debugging startup (uncomment line below and line nr. 2) ###
+# zprof
