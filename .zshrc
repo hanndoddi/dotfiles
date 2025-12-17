@@ -28,9 +28,9 @@ zinit light zsh-users/zsh-autosuggestions
 bindkey '^l' autosuggest-accept
 
 # Enhanced completion system
-zinit wait lucid for \
-    atload="zicompinit; zicdreplay" \
-    zsh-users/zsh-completions
+zinit light zsh-users/zsh-completions
+zicompinit
+zicdreplay
 
 # FZF-powered tab completion
 zinit light Aloxaf/fzf-tab
@@ -218,18 +218,83 @@ alias terminaldoom="~/github/terminal-doom && zig-out/bin/terminal-doom"
 alias theconstruct="cd ~/theconstruct/"
 alias cs="cd ~/theconstruct/"
 
+
+
+
 # =============================================
-# 13. FZF Configuration
+# 13. FZF Configuration (smart in $HOME)
 # =============================================
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+# Keybindings (use ONE)
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] \
+  && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
-export FZF_DEFAULT_COMMAND='find . -type f'
-export FZF_DEFAULT_OPTS="--height 50% --border \
---bind=ctrl-l:accept \
---preview '[[ -f {} ]] && batcat --color=always {} || [[ -d {} ]] && ls -lh --color=always {}'"
+# --- What folders are "real work" when you're sitting in ~ ---
+# Edit this list any time (add/remove folders you like)
+FZF_HOME_DIRS=(
+  "$HOME/dev"
+  "$HOME/dotfiles"
+  "$HOME/github"
+  "$HOME/gitlab"
+  "$HOME/Documents"
+  "$HOME/Downloads"
+  "$HOME/Pictures"
+  "$HOME/Music"
+  "$HOME/Videos"
+  "$HOME/.config"
+)
+
+# --- Excludes (apply everywhere) ---
+FZF_FD_EXCLUDES=(
+  --exclude .git
+  --exclude .cache
+  --exclude node_modules
+  --exclude .venv
+  --exclude venv
+  --exclude __pycache__
+  --exclude .local/share/Trash
+  --exclude .wine
+  --exclude bosewine
+  --exclude dist-newstyle
+)
+
+# --- Smart command: if PWD is ~, search only in FZF_HOME_DIRS; otherwise search from PWD ---
+_fzf_fd_files() {
+  if [[ "$PWD" == "$HOME" ]]; then
+    fd --type f --hidden --color=always "${FZF_FD_EXCLUDES[@]}" . "${FZF_HOME_DIRS[@]}"
+  else
+    fd --type f --hidden --color=always "${FZF_FD_EXCLUDES[@]}" .
+  fi
+}
+
+_fzf_fd_dirs() {
+  if [[ "$PWD" == "$HOME" ]]; then
+    fd --type d --hidden --color=always "${FZF_FD_EXCLUDES[@]}" . "${FZF_HOME_DIRS[@]}"
+  else
+    fd --type d --hidden --color=always "${FZF_FD_EXCLUDES[@]}" .
+  fi
+}
+
+# fzf uses these for Ctrl-T / Alt-C
+export FZF_CTRL_T_COMMAND='_fzf_fd_files'
+export FZF_ALT_C_COMMAND='_fzf_fd_dirs'
+
+# If you run plain `fzf`, keep it useful too:
+export FZF_DEFAULT_COMMAND='_fzf_fd_files'
+
+# --- UI / preview ---
+export FZF_DEFAULT_OPTS='
+  --ansi
+  --height 50%
+  --border
+  --layout=reverse
+  --bind=ctrl-l:accept
+  --preview "([[ -f {} ]] && batcat --style=numbers --color=always {}) || ([[ -d {} ]] && eza -lah --icons --color=always {})"
+'
+# --- History search ---
 export FZF_CTRL_R_OPTS='--preview ""'
+
+
 
 export NVM_DIR="$HOME/.config/nvm"
 # --- Lazy-load NVM on first use (speeds up zsh startup) ---
