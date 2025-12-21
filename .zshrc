@@ -242,6 +242,7 @@ FZF_HOME_DIRS=(
   "$HOME/Music"
   "$HOME/Videos"
   "$HOME/.config"
+  "$HOME/Arduino"
 )
 
 # --- Excludes (apply everywhere) ---
