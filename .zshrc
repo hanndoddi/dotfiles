@@ -203,7 +203,7 @@ alias vis='nvim "+set si"'
 alias home='cd ~'
 
 alias lg='lazygit'
-alias ya='yazi'
+alias ya='y'
 
 alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;"
 bindkey '^G' clear-screen
