@@ -207,8 +207,8 @@ alias ya='y'
 
 alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;"
 bindkey '^G' clear-screen
-alias wt='glow "$(ls -1t --color=never ~/github/Project_Management_Test/weeks_2025_todo/2025_*.md | head -n 1)"'
-alias we='nvim "$(ls -1t --color=never ~/github/Project_Management_Test/weeks_2025_todo/2025_*.md | head -n 1)"'
+alias wt='glow "$(ls -1t --color=never ~/github/Project_Management_Test/weeks_2026_todo/2026_*.md | head -n 1)"'
+alias we='nvim "$(ls -1t --color=never ~/github/Project_Management_Test/weeks_2026_todo/2026_*.md | head -n 1)"'
 
 alias wtt='glow "$(ls -1t --color=never ~/github/master_plan_2025/week_at_glance/week_*.md | head -n 1)"'
 alias wee='nvim "$(ls -1t --color=never ~/github/master_plan_2025/week_at_glance/week_*.md | head -n 1)"'
