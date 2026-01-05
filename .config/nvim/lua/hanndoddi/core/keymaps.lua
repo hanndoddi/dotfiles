@@ -89,7 +89,7 @@ vim.keymap.set('n', '<leader>id', function()
 
   local Terminal = require('toggleterm.terminal').Terminal
   Terminal:new({
-    cmd = 'cd ' .. root .. ' && source venv/bin/activate && mkdocs serve',
+    cmd = 'cd ' .. root .. ' && source .venv/bin/activate && mkdocs serve',
     -- hidden = true,
     -- direction = "float",
     close_on_exit = false,
