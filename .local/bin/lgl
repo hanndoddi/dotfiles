@@ -5,7 +5,7 @@
 kitty @ launch --type=window --cwd="$(pwd)" --title="lazygit-log" lazygit log
 
 # Give it a moment to open
-sleep 0.2
+# sleep 0.9
 
 # Send two '+' keypresses to open patch view of top two commits
-kitty @ send-text --match title:lazygit-log "++"
+# kitty @ send-text --match title:lazygit-log "++"
