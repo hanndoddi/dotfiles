@@ -1,4 +1,12 @@
+
 color:
   when: always
-  ls_colors: true
+  theme: custom
 
+icons:
+  when: always
+
+sorting:
+  dir-grouping: first
+
+layout: grid
