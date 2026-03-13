@@ -662,3 +662,10 @@ export PATH="$HOME/bin:$PATH"
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 . "$HOME/.cargo/env"
+
+
+w3msearch () {
+    local search=$@
+    search="${search// /%20}"
+    w3m "https://www.duckduckgo.com/?q=$search"
+}
