@@ -74,6 +74,12 @@ export VISUAL=nvim
 # other
 export PATH="$HOME/.platformio/penv/bin:$PATH"
 
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+nvm use default >/dev/null
+
+
+
 # =============================================
 #  6. Set Up Prompt & Tools
 # =============================================
@@ -82,6 +88,17 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 source ~/.local/bin/construct
 
+sson() {
+  eval "$(starship init zsh)"
+}
+
+ssoff() {
+PROMPT='%F{green}%1~%f $ '
+}
+
+stealth() {
+  PROMPT=''
+}
 # =============================================
 #  7. History Settings
 # =============================================
@@ -209,18 +226,26 @@ alias ya='y'
 
 alias multipull="find . -mindepth 1 -maxdepth 1 -type d -print -exec git -C {} pull \;"
 bindkey '^G' clear-screen
-alias wt='glow "$(ls -1t --color=never ~/github/Project_Management_Test/weeks_2026_todo/2026_*.md | head -n 1)"'
-alias we='nvim "$(ls -1t --color=never ~/github/Project_Management_Test/weeks_2026_todo/2026_*.md | head -n 1)"'
+alias wt='glow "$(\ls -1t --color=never ~/github/Project_Management_Test/weeks_2026_todo/2026_week_*.md | head -n 1)"'
+alias we='nvim "$(\ls -1t --color=never ~/github/Project_Management_Test/weeks_2026_todo/2026_week_*.md | head -n 1)"'
 
-alias wtt='glow "$(ls -1t --color=never ~/github/master_plan_2025/week_at_glance/week_*.md | head -n 1)"'
-alias wee='nvim "$(ls -1t --color=never ~/github/master_plan_2025/week_at_glance/week_*.md | head -n 1)"'
+alias wtt='glow "$(\ls -1t --color=never ~/github/master_plan_2025/week_at_glance/week_*.md | head -n 1)"'
+alias wee='nvim "$(\ls -1t --color=never ~/github/master_plan_2025/week_at_glance/week_*.md | head -n 1)"'
 
 
 alias terminaldoom="~/github/terminal-doom && zig-out/bin/terminal-doom"
 alias theconstruct="cd ~/theconstruct/"
 alias cs="cd ~/theconstruct/"
 
+viget() {
+  kitty @ get-text --extent=screen > /tmp/term.txt
+  nvim /tmp/term.txt
+}
 
+vigetall() {
+  kitty @ get-text --extent=all > /tmp/term.txt
+  nvim /tmp/term.txt
+}
 
 
 # =============================================
@@ -301,22 +326,80 @@ export FZF_CTRL_R_OPTS='--preview ""'
 
 export NVM_DIR="$HOME/.config/nvm"
 # --- Lazy-load NVM on first use (speeds up zsh startup) ---
-_nvm_lazy_load() {
-  unset -f nvm node npm npx pnpm yarn corepack 2>/dev/null
+# _nvm_lazy_load() {
+#   unset -f nvm node npm npx pnpm yarn corepack 2>/dev/null
+#
+#   [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+#   # In zsh you usually do NOT need bash_completion; leave it off unless you know you need it.
+#   # [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
+# }
+#
+# nvm()      { _nvm_lazy_load; nvm "$@"; }
+# node()     { _nvm_lazy_load; node "$@"; }
+# npm()      { _nvm_lazy_load; npm "$@"; }
+# npx()      { _nvm_lazy_load; npx "$@"; }
+# pnpm()     { _nvm_lazy_load; pnpm "$@"; }
+# yarn()     { _nvm_lazy_load; yarn "$@"; }
+# corepack() { _nvm_lazy_load; corepack "$@"; }
 
-  [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
-  # In zsh you usually do NOT need bash_completion; leave it off unless you know you need it.
-  # [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
+
+
+
+## lookup
+
+
+# ?() {
+#   local query="$*"
+#   local url="https://duckduckgo.com/lite/?q=${query// /+}"
+#   w3m "$url"
+# }
+
+
+# ? () {
+#   local query=$(printf '%s\n' "$*" | sed 's/ /+/g')
+#   w3m "https://duck.co/?q=$query"
+# }
+alias '?'="duckg"
+
+duckg() {
+query=$(echo "$@" | sed 's/ /%20/')
+w3m -no-cookie "https://duckduckgo.com/?q=$query"
 }
 
-nvm()      { _nvm_lazy_load; nvm "$@"; }
-node()     { _nvm_lazy_load; node "$@"; }
-npm()      { _nvm_lazy_load; npm "$@"; }
-npx()      { _nvm_lazy_load; npx "$@"; }
-pnpm()     { _nvm_lazy_load; pnpm "$@"; }
-yarn()     { _nvm_lazy_load; yarn "$@"; }
-corepack() { _nvm_lazy_load; corepack "$@"; }
+alias '??'="askai"
 
+setopt NO_NOMATCH
+
+askai() {
+  if [[ -z "$*" && -t 0 ]]; then
+    echo "Usage: ?? <question>"
+    return 1
+  fi
+
+  echo  "Waiting for a reply from Skynet..."
+  gemini "$@" 2>/dev/null
+}
+
+
+# askai() {
+#     if [[ -z "$@" ]]; then
+#         echo "Error: Missing query text. Usage: ?? [your question]"
+#         return 1
+#     fi
+#
+#     gemini "$@"
+# }
+
+
+# setopt NO_NOMATCH
+#
+#
+# \?\?() {
+#   noglob openai responses create \
+#     --model gpt-5.1-codex \
+#     --input "$*" \
+#     --output-format text
+# }
 
 ### zprof for debugging startup (uncomment line below and line nr. 2) ###
 # zprof
