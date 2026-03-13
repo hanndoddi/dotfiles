@@ -89,12 +89,38 @@ vim.keymap.set('n', '<leader>id', function()
 
   local Terminal = require('toggleterm.terminal').Terminal
   Terminal:new({
-    cmd = 'cd ' .. root .. ' && source .venv/bin/activate && mkdocs serve',
+    cmd = 'cd ' .. root .. ' && source .venv/bin/activate && mkdocs serve -o',
     -- hidden = true,
     -- direction = "float",
     close_on_exit = false,
   }):toggle()
 end, { desc = 'Serve MkDocs from root' })
+
+vim.keymap.set('n', '<leader>iz', function()
+  local util = require 'plenary.path'
+  local cwd = vim.fn.getcwd()
+  local root = cwd
+ -- Find directory that contains zensical.toml and serve the page localy
+  while root ~= '/' do
+    if util.new(root .. '/zensical.toml'):exists() then
+      break
+    end
+    root = util.new(root):parent().filename
+  end
+
+  if root == '/' then
+    vim.notify('zensical.toml not found in parent directories', vim.log.levels.ERROR)
+    return
+  end
+
+  local Terminal = require('toggleterm.terminal').Terminal
+  Terminal:new({
+    cmd = 'cd ' .. root .. ' && source .venv/bin/activate && zensical serve -o',
+    -- hidden = true,
+    -- direction = "float",
+    close_on_exit = false,
+  }):toggle()
+end, { desc = 'Serve Zensical from root' })
 
 -- Toggle diagnostics
 local diagnostics_enabled = true
