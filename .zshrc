@@ -6,51 +6,46 @@
 ## ( o.o )  <  Zshhhhhhhh... )  ##
 ##  > ^ <    ╰──────────────╯   ##
  ##----------------------------##
-# =============================================
-#  1. Load Completion System FIRST(not in use)
-# =============================================
-# autoload -Uz compinit && compinit
 
 # =============================================
-#  2. Load Zinit (Plugin Manager)
+#  1. Load Zinit (Plugin Manager)
 # =============================================
 source ~/.local/share/zinit/zinit.git/zinit.zsh
 
 # =============================================
-#  3. Load Plugins via Zinit
+#  2. Load Plugins via Zinit (Turbo Mode)
 # =============================================
 
 # Syntax highlighting for better readability
+zinit ice wait lucid
 zinit light zdharma-continuum/fast-syntax-highlighting
 
 # Autosuggestions based on history
+zinit ice wait lucid atload"bindkey '^l' autosuggest-accept"
 zinit light zsh-users/zsh-autosuggestions
-bindkey '^l' autosuggest-accept
 
-# Enhanced completion system
+# Enhanced completion system (loaded synchronously)
 zinit light zsh-users/zsh-completions
+zinit light Aloxaf/fzf-tab
 zicompinit
 zicdreplay
 
-# FZF-powered tab completion
-zinit light Aloxaf/fzf-tab
 zstyle ':fzf-tab:*' fzf-bindings 'ctrl-l:accept'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' fzf-preview \
+    '[[ -f $realpath ]] && batcat --color=always --style=numbers $realpath || ls --color=always $realpath'
+zstyle ':completion:*' fzf-tab:complete use-icon-map yes
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # =============================================
-#  4. Enable Colors & Theming
+#  3. Enable Colors & Theming (cached)
 # =============================================
 
 export CLICOLOR=1
-eval "$(dircolors -b ~/.config/lscolors/LS_COLORS)"
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-zstyle ':completion:*' fzf-preview \
-    '[[ -f $realpath ]] && batcat --color=always --style=numbers $realpath || ls --color=always $realpath'
-
-zstyle ':completion:*' fzf-tab:complete use-icon-map yes
+source ~/.config/zsh/dircolors.zsh
 
 # =============================================
-#  5. Export Environment Variables
+#  4. Export Environment Variables
 # =============================================
 
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
@@ -74,18 +69,31 @@ export VISUAL=nvim
 # other
 export PATH="$HOME/.platformio/penv/bin:$PATH"
 
+# =============================================
+#  5. NVM — Lazy Load (loads first use)
+# =============================================
+
 export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-nvm use default >/dev/null
 
+_nvm_lazy_load() {
+  unset -f nvm node npm npx pnpm yarn corepack 2>/dev/null
+  [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+}
 
+nvm()      { _nvm_lazy_load; nvm "$@"; }
+node()     { _nvm_lazy_load; node "$@"; }
+npm()      { _nvm_lazy_load; npm "$@"; }
+npx()      { _nvm_lazy_load; npx "$@"; }
+pnpm()     { _nvm_lazy_load; pnpm "$@"; }
+yarn()     { _nvm_lazy_load; yarn "$@"; }
+corepack() { _nvm_lazy_load; corepack "$@"; }
 
 # =============================================
-#  6. Set Up Prompt & Tools
+#  6. Set Up Prompt & Tools (cached)
 # =============================================
 
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+source ~/.config/zsh/starship_init.zsh
+source ~/.config/zsh/zoxide_init.zsh
 source ~/.local/bin/construct
 
 sson() {
@@ -93,12 +101,13 @@ sson() {
 }
 
 ssoff() {
-PROMPT='%F{green}%1~%f $ '
+  PROMPT='%F{green}%1~%f $ '
 }
 
 stealth() {
   PROMPT=''
 }
+
 # =============================================
 #  7. History Settings
 # =============================================
@@ -121,7 +130,7 @@ alias b='cd ..'
 
 alias grep='grep --color=auto'
 
-# =============================================
+#=============================================
 # 10. LSD Aliases (Better LS)
 # =============================================
 
@@ -188,6 +197,7 @@ up() {
     d=$(echo $d | sed 's/^\///')
     cd ${d:-..}
 }
+
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -196,6 +206,7 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
 # =============================================
 # 12. Other Aliases
 # =============================================
@@ -232,7 +243,6 @@ alias we='nvim "$(\ls -1t --color=never ~/github/Project_Management_Test/weeks_2
 alias wtt='glow "$(\ls -1t --color=never ~/github/master_plan_2025/week_at_glance/week_*.md | head -n 1)"'
 alias wee='nvim "$(\ls -1t --color=never ~/github/master_plan_2025/week_at_glance/week_*.md | head -n 1)"'
 
-
 alias terminaldoom="~/github/terminal-doom && zig-out/bin/terminal-doom"
 alias theconstruct="cd ~/theconstruct/"
 alias cs="cd ~/theconstruct/"
@@ -247,17 +257,15 @@ vigetall() {
   nvim /tmp/term.txt
 }
 
-
 # =============================================
 # 13. FZF Configuration (smart in $HOME)
 # =============================================
 
-# Keybindings (use ONE)
+# Keybindings
 [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] \
   && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
-# --- What folders are "real work" when you're sitting in ~ ---
-# Edit this list any time (add/remove folders you like)
+# What folders are "real work" when you're sitting in ~ 
 FZF_HOME_DIRS=(
   "$HOME/dev"
   "$HOME/dotfiles"
@@ -272,7 +280,7 @@ FZF_HOME_DIRS=(
   "$HOME/Arduino"
 )
 
-# --- Excludes (apply everywhere) ---
+# Excludes (apply everywhere)
 FZF_FD_EXCLUDES=(
   --exclude .git
   --exclude .cache
@@ -286,7 +294,7 @@ FZF_FD_EXCLUDES=(
   --exclude dist-newstyle
 )
 
-# --- Smart command: if PWD is ~, search only in FZF_HOME_DIRS; otherwise search from PWD ---
+# Smart command: if PWD is ~, search only in FZF_HOME_DIRS; otherwise search from PWD
 _fzf_fd_files() {
   if [[ "$PWD" == "$HOME" ]]; then
     fd --type f --hidden --color=always "${FZF_FD_EXCLUDES[@]}" . "${FZF_HOME_DIRS[@]}"
@@ -306,11 +314,9 @@ _fzf_fd_dirs() {
 # fzf uses these for Ctrl-T / Alt-C
 export FZF_CTRL_T_COMMAND='_fzf_fd_files'
 export FZF_ALT_C_COMMAND='_fzf_fd_dirs'
-
-# If you run plain `fzf`, keep it useful too:
 export FZF_DEFAULT_COMMAND='_fzf_fd_files'
 
-# --- UI / preview ---
+# fzf UI / preview
 export FZF_DEFAULT_OPTS='
   --ansi
   --height 50%
@@ -319,51 +325,18 @@ export FZF_DEFAULT_OPTS='
   --bind=ctrl-l:accept
   --preview "([[ -f {} ]] && batcat --style=numbers --color=always {}) || ([[ -d {} ]] && eza -lah --icons --color=always {})"
 '
-# --- History search ---
+# History search
 export FZF_CTRL_R_OPTS='--preview ""'
 
+# =============================================
+# 14. Web Lookup
+# =============================================
 
-
-export NVM_DIR="$HOME/.config/nvm"
-# --- Lazy-load NVM on first use (speeds up zsh startup) ---
-# _nvm_lazy_load() {
-#   unset -f nvm node npm npx pnpm yarn corepack 2>/dev/null
-#
-#   [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
-#   # In zsh you usually do NOT need bash_completion; leave it off unless you know you need it.
-#   # [[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
-# }
-#
-# nvm()      { _nvm_lazy_load; nvm "$@"; }
-# node()     { _nvm_lazy_load; node "$@"; }
-# npm()      { _nvm_lazy_load; npm "$@"; }
-# npx()      { _nvm_lazy_load; npx "$@"; }
-# pnpm()     { _nvm_lazy_load; pnpm "$@"; }
-# yarn()     { _nvm_lazy_load; yarn "$@"; }
-# corepack() { _nvm_lazy_load; corepack "$@"; }
-
-
-
-
-## lookup
-
-
-# ?() {
-#   local query="$*"
-#   local url="https://duckduckgo.com/lite/?q=${query// /+}"
-#   w3m "$url"
-# }
-
-
-# ? () {
-#   local query=$(printf '%s\n' "$*" | sed 's/ /+/g')
-#   w3m "https://duck.co/?q=$query"
-# }
 alias '?'="duckg"
 
 duckg() {
-query=$(echo "$@" | sed 's/ /%20/')
-w3m -no-cookie "https://duckduckgo.com/?q=$query"
+  query=$(echo "$@" | sed 's/ /%20/')
+  w3m -no-cookie "https://duckduckgo.com/?q=$query"
 }
 
 alias '??'="askai"
@@ -376,30 +349,9 @@ askai() {
     return 1
   fi
 
-  echo  "Waiting for a reply from Skynet..."
+  echo "Waiting for a reply from Skynet..."
   gemini "$@" 2>/dev/null
 }
-
-
-# askai() {
-#     if [[ -z "$@" ]]; then
-#         echo "Error: Missing query text. Usage: ?? [your question]"
-#         return 1
-#     fi
-#
-#     gemini "$@"
-# }
-
-
-# setopt NO_NOMATCH
-#
-#
-# \?\?() {
-#   noglob openai responses create \
-#     --model gpt-5.1-codex \
-#     --input "$*" \
-#     --output-format text
-# }
 
 ### zprof for debugging startup (uncomment line below and line nr. 2) ###
 # zprof
