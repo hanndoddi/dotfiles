@@ -6,7 +6,7 @@
 
 [Rofi](.config/rofi) - I figured after a while I would mainly press super key type the app and that was it I switched to Rofi because it opens fast in the middle and then it's gone.
 
-**70% happy status**
+**80% happy status**
 
 - [ ] Shutdown option
 - [ ] Calculator(do I even need it?)
@@ -15,11 +15,11 @@
 
 [Bash](.bashrc) - Don't use it any more but the config is here
 
-**60% happy status**
+**70% happy status**
 
 [Zhell](.zshrc) - After trying to configure bash with some fancy features I figured it was easier to configure Zshell
 
-**80% happy status**
+**90% happy status**
 
 - [ ] Doesn't load fast but not slow but every one is looking for that lightning speed right?
 
@@ -27,11 +27,11 @@
 
 [Kitty](.config/kitty) - Picked it because it's called kitty, and has a cat logo. 🐈️
 
-**90% happy status**
+**95% happy status**
 
-- [ ] Start up a bit slow but might be the laptop but I can wait 1 second.
+- [X] Start up a bit slow but might be the laptop but I can wait 1 second.
 
-[Starship](.config/starship.toml) - Don't know about you but I'm the type that needs a nice looking prompt.
+[Starship](.config/starship.toml) - for a nice looking prompt.
 
 **100% happy status**
 
@@ -41,18 +41,19 @@
 
 - [ ] Would like to scale it up a bit
 
-[Nvim](.config/nvim) - 90% of my overall config time went into Neovim... but hey, I use Neovim b.t.w.
+[Nvim](.config/nvim) - 90% of my overall config time went into Neovim... but it works.
 
-**70% happy status (reaching 100% is probably imposable right?)**
+**80% happy status (reaching 100% is probably imposable right?)**
 
-- [ ] Loads a bit slow I mean I have like way too many plugins
-- [ ] Nvim UI seems to start up slow, believe it or not it's not because of the plugins.
+- [X] Loads a bit slow I mean I have like way too many plugins
+- [X] Nvim UI seems to start up slow, believe it or not it's not because of the plugins.
 
 ## More tools I use
 
 Have not seen a reason to configure these yet.
 
 - Lazygit 100% happy status
+- Lazydocker 80% happy status
 - FzF 100% happy status
 - Glow 80% happy status
 - Batcat 100% happy status
