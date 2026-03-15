@@ -130,30 +130,29 @@ alias b='cd ..'
 
 alias grep='grep --color=auto'
 
-#=============================================
-# 10. LSD Aliases (Better LS)
+# =============================================
+# LSD Aliases (better ls)
 # =============================================
 
-alias la='lsd -Alh'
-alias ls='lsd -aFh --color=always'
-alias lx='lsd -lXBh'
-alias lk='lsd -lSrh'
-alias lc='lsd -ltcrh'
-alias lu='lsd -lturh'
-alias lr='lsd -lRh'
-alias lt='lsd -ltrh'
+# Everyday listing
+alias ls='lsd -aFh --color=always'    # Default: all files, classified, colorized
+alias la='lsd -Alh'                   # Almost all, long format, human-readable
+alias ll='lsd -lh'                    # Long format, human-readable
+alias lla='lsd -Alh'                  # Same as la (long + almost all)
 
-alias lm='lsd -alh | more'
-alias lw='lsd -xAh'
-alias ll='lsd -Fls'
-alias labc='lsd -lap'
+# Sorted listings
+alias lk='lsd -lSrh'                  # Sort by size (smallest first)
+alias lt='lsd -ltrh'                  # Sort by time (oldest first)
 
-alias lf="lsd -l | egrep -v '^d'"
-alias ldir="lsd -l | egrep '^d'"
+# Navigation helpers
+alias lr='lsd -lRh'                   # Recursive listing
+alias lm='lsd -alh | less -R'        # Paginated listing
 
-alias lla='lsd -Al'
-alias las='lsd -A'
-alias lls='lsd -l'
+#dir or Files only - using zsh glob qualifiers
+alias lf='lsd -l (.*|*)(^/)'          # All files (hidden + visible)
+alias lfv='lsd -l *(^/)'              # Visible files only
+alias lfh='lsd -l .*(^/)'             # Hidden files only
+alias ldir='lsd -d */ -l'             # List directories only
 
 # =============================================
 # 11. Functions
