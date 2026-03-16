@@ -1,10 +1,12 @@
 return {
   'akinsho/toggleterm.nvim',
   version = '*',
+  keys = {
+    { '<A-æ>', '<cmd>ToggleTerm<cr>', desc = 'Toggle terminal' },
+  },
   config = function()
     require('toggleterm').setup {
       size = 20,
-      -- open_mapping = [[<C-æ>]],
       open_mapping = [[<A-æ>]],
       hide_numbers = true,
       shade_filetypes = {},
@@ -14,12 +16,11 @@ return {
       insert_mappings = true,
       terminal_mappings = true,
       persist_size = true,
-      direction = 'horizontal', -- default mode
+      direction = 'horizontal',
       close_on_exit = true,
       shell = vim.o.shell,
     }
 
-    -- Optional terminal keymaps
     function _G.set_terminal_keymaps()
       local opts = { buffer = 0 }
       vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
