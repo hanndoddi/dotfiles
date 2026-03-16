@@ -91,23 +91,39 @@ corepack() { _nvm_lazy_load; corepack "$@"; }
 # =============================================
 #  6. Set Up Prompt & Tools (cached)
 # =============================================
-
 source ~/.config/zsh/starship_init.zsh
 source ~/.config/zsh/zoxide_init.zsh
 source ~/.local/bin/construct
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+setopt PROMPT_SUBST
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats '%F{cyan}(%b)%f'
+
+precmd() {
+  vcs_info
+  if [[ -n $VIRTUAL_ENV ]]; then
+    VENV_PROMPT="%F{yellow}(${VIRTUAL_ENV##*/})%f "
+  else
+    VENV_PROMPT=""
+  fi
+}
 
 sson() {
   eval "$(starship init zsh)"
 }
 
 ssoff() {
-  PROMPT='%F{green}%1~%f $ '
+  PROMPT='%F{green}%1~%f ${vcs_info_msg_0_} ${VENV_PROMPT}$ '
 }
 
 stealth() {
   PROMPT=''
 }
 
+ssoff
 # =============================================
 #  7. History Settings
 # =============================================
