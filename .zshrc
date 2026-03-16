@@ -100,7 +100,10 @@ setopt PROMPT_SUBST
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' formats '%F{cyan}(%b)%f'
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr '%F{green}+%f'
+zstyle ':vcs_info:git:*' unstagedstr '%F{red}*%f'
+zstyle ':vcs_info:git:*' formats '%F{cyan}(%b%u%c)%f'
 
 precmd() {
   vcs_info
@@ -122,8 +125,9 @@ ssoff() {
 stealth() {
   PROMPT=''
 }
-
+# default start prompt
 ssoff
+
 # =============================================
 #  7. History Settings
 # =============================================
