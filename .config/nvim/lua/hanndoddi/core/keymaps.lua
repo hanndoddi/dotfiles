@@ -69,11 +69,11 @@ vim.keymap.set('n', '<leader>icx', function()
   vim.cmd 'split | terminal ./main'
 end, { desc = 'Compile and run C in terminal split' })
 
+-- Serve MKdocs
 vim.keymap.set('n', '<leader>id', function()
   local util = require 'plenary.path'
   local cwd = vim.fn.getcwd()
   local root = cwd
-
   -- Find directory that contains mkdocs.yml
   while root ~= '/' do
     if util.new(root .. '/mkdocs.yml'):exists() then
@@ -81,12 +81,10 @@ vim.keymap.set('n', '<leader>id', function()
     end
     root = util.new(root):parent().filename
   end
-
   if root == '/' then
     vim.notify('mkdocs.yml not found in parent directories', vim.log.levels.ERROR)
     return
   end
-
   local Terminal = require('toggleterm.terminal').Terminal
   Terminal:new({
     cmd = 'cd ' .. root .. ' && source .venv/bin/activate && mkdocs serve -o',
@@ -96,11 +94,12 @@ vim.keymap.set('n', '<leader>id', function()
   }):toggle()
 end, { desc = 'Serve MkDocs from root' })
 
+-- Serve Zensical
 vim.keymap.set('n', '<leader>iz', function()
   local util = require 'plenary.path'
   local cwd = vim.fn.getcwd()
   local root = cwd
- -- Find directory that contains zensical.toml and serve the page localy
+     -- Find directory that contains zensical.toml
   while root ~= '/' do
     if util.new(root .. '/zensical.toml'):exists() then
       break
@@ -122,6 +121,18 @@ vim.keymap.set('n', '<leader>iz', function()
   }):toggle()
 end, { desc = 'Serve Zensical from root' })
 
+
+-- serve http
+vim.keymap.set('n', '<leader>ih', function()
+  local Terminal = require('toggleterm.terminal').Terminal
+  Terminal:new({
+    cmd = 'python3 -m http.server 8000',
+    close_on_exit = false,
+  }):toggle()
+
+  vim.fn.jobstart({ 'xdg-open', 'http://localhost:8000' }, { detach = true })
+end, { desc = 'Serve HTTP' })
+
 -- Toggle diagnostics
 local diagnostics_enabled = true
 vim.keymap.set('n', '<leader>t', function()
@@ -136,8 +147,6 @@ end, { desc = 'Toggle diagnostics', silent = true })
 
 -- toggle indent on and off
 
-
- 
 vim.keymap.set("n", "<leader>ui", function()
   local ok, snacks = pcall(require, "snacks")
   if not ok then
