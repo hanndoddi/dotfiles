@@ -267,13 +267,12 @@ alias theconstruct="cd ~/theconstruct/"
 alias cs="cd ~/theconstruct/"
 
 viget() {
-  kitty @ get-text --extent=screen > /tmp/term.txt
-  nvim /tmp/term.txt
+  kitty @ get-text --extent=screen > /tmp/term.sh
+  nvim /tmp/term.sh
 }
-
 vigetall() {
-  kitty @ get-text --extent=all > /tmp/term.txt
-  nvim /tmp/term.txt
+  kitty @ get-text --extent=all > /tmp/term.sh
+  nvim /tmp/term.sh
 }
 
 # =============================================
