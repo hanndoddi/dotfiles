@@ -77,7 +77,7 @@ def create_cells() -> list[str]:
     now = datetime.datetime.now()
     return [
         get_laptop_battery_status(),
-        now.strftime("%A %d %b"),
+        now.strftime("%a %d %b | week %V"),
         now.strftime("%H:%M"),
     ]
 
