@@ -99,7 +99,7 @@ vim.keymap.set('n', '<leader>iz', function()
   local util = require 'plenary.path'
   local cwd = vim.fn.getcwd()
   local root = cwd
-     -- Find directory that contains zensical.toml
+  -- Find directory that contains zensical.toml
   while root ~= '/' do
     if util.new(root .. '/zensical.toml'):exists() then
       break
@@ -121,7 +121,6 @@ vim.keymap.set('n', '<leader>iz', function()
   }):toggle()
 end, { desc = 'Serve Zensical from root' })
 
-
 -- serve http
 vim.keymap.set('n', '<leader>ih', function()
   local Terminal = require('toggleterm.terminal').Terminal
@@ -138,34 +137,29 @@ local diagnostics_enabled = true
 
 vim.keymap.set('n', '<leader>t', function()
   diagnostics_enabled = not diagnostics_enabled
-
   if diagnostics_enabled then
     vim.diagnostic.enable(true, { bufnr = 0 })
   else
     vim.diagnostic.enable(false, { bufnr = 0 })
   end
-
   print('Diagnostics ' .. (diagnostics_enabled and 'enabled' or 'disabled'))
 end, { desc = 'Toggle diagnostics', silent = true })
 
 -- toggle indent on and off
 
-vim.keymap.set("n", "<leader>ui", function()
-  local ok, snacks = pcall(require, "snacks")
+vim.keymap.set('n', '<leader>ui', function()
+  local ok, snacks = pcall(require, 'snacks')
   if not ok then
-    vim.notify("Snacks not loaded", vim.log.levels.WARN)
+    vim.notify('Snacks not loaded', vim.log.levels.WARN)
     return
   end
   local i = snacks.indent
   i.enabled = not i.enabled
   if i.enabled then
     i.enable()
-    vim.notify("Snacks indent: ON", vim.log.levels.INFO)
+    vim.notify('Snacks indent: ON', vim.log.levels.INFO)
   else
     i.disable()
-    vim.notify("Snacks indent: OFF", vim.log.levels.INFO)
+    vim.notify('Snacks indent: OFF', vim.log.levels.INFO)
   end
-end, { desc = "Toggle Snacks Indent" })
-
-
-
+end, { desc = 'Toggle Snacks Indent' })
