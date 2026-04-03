@@ -135,13 +135,16 @@ end, { desc = 'Serve HTTP' })
 
 -- Toggle diagnostics
 local diagnostics_enabled = true
+
 vim.keymap.set('n', '<leader>t', function()
   diagnostics_enabled = not diagnostics_enabled
+
   if diagnostics_enabled then
-    vim.diagnostic.enable(0)
+    vim.diagnostic.enable(true, { bufnr = 0 })
   else
-    vim.diagnostic.disable(0)
+    vim.diagnostic.enable(false, { bufnr = 0 })
   end
+
   print('Diagnostics ' .. (diagnostics_enabled and 'enabled' or 'disabled'))
 end, { desc = 'Toggle diagnostics', silent = true })
 
