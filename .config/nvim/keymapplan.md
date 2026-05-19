@@ -2,13 +2,13 @@
 
 ## what I have
 
-- d show line diagnostic (don't know if it's usefull yet)
-- D Show buffer diagnostic (don't know if it's usefull yet)
+- d show line diagnostic 
+- D Show buffer diagnostic 
 - l lazy git
 - n clear search
 - u trigger linting (don't know how to use it)
 - <space> old files
-- c +code action (havent's used this)
+- c +code action 
   - a see avalible code action 
 - e +file tree
   - e toggle file explorer
@@ -24,18 +24,11 @@
   - c org capture
 - r LSP
   - s LSP restart
-  - n smart rename (not sure what this is)
+  - n smart rename 
 - s +split
   - h horisontal split
   - v vertical split
-- t +tabs
-  - o open new tab
-  - n next tab
-  - p previus tab
-  - x close tab
-- w session
-  - s save session
-  - r resore session
+- t Diagnostic toggle
 
 ## what I'm thinking about
 
