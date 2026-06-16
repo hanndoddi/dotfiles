@@ -163,3 +163,10 @@ vim.keymap.set('n', '<leader>ui', function()
     vim.notify('Snacks indent: OFF', vim.log.levels.INFO)
   end
 end, { desc = 'Toggle Snacks Indent' })
+
+-- procrastination
+
+vim.keymap.set("n", "<leader>cv", "<cmd>CellularAutomaton make_it_rain<CR>")
+vim.keymap.set("n", "<leader>cb", "<cmd>CellularAutomaton scramble<CR>")
+vim.keymap.set("n", "<leader>cn", "<cmd>CellularAutomaton game_of_life<CR>")
+
