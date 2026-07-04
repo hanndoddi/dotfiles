@@ -1,0 +1,22 @@
+# =====================
+# Remote Bash
+# =====================
+
+# Prompt
+PS1='\u@\h:\w\$ '
+
+# Aliases
+alias ll='ls -lah'
+alias la='ls -A'
+alias l='ls -CF'
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# History
+HISTSIZE=5000
+HISTFILESIZE=10000
+HISTCONTROL=ignoredups:erasedups
+
+# Shell options
+shopt -s histappend
+shopt -s checkwinsize
