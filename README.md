@@ -2,14 +2,25 @@
 
 > Where the goal is perfection but I'm usually just happy that it sort of works
 
+## Remote
+
+[Remote](remote) - Tiny Vim and Bash config 
+
+```bash
+curl -o ~/.vimrc https://raw.githubusercontent.com/hanndoddi/dotfiles/main/remote/.vimrc
+curl -o ~/.bashrc.local https://raw.githubusercontent.com/hanndoddi/dotfiles/main/remote/.bashrc.local
+[ -f ~/.bashrc.local ] && source ~/.bashrc.local
+```
+
+**80% happy status**
+
 ## OS
 
 [Rofi](.config/rofi) - I figured after a while I would mainly press super key type the app and that was it I switched to Rofi because it opens fast in the middle and then it's gone.
 
-**80% happy status**
+**90% happy status**
 
 - [ ] Shutdown option
-- [ ] Calculator(do I even need it?)
 
 ## Shell
 
@@ -21,15 +32,12 @@
 
 **90% happy status**
 
-- [ ] Doesn't load fast but not slow but every one is looking for that lightning speed right?
-
 ## Terminal
 
 [Kitty](.config/kitty) - Picked it because it's called kitty, and has a cat logo. 🐈️
 
-**95% happy status**
+**97% happy status**
 
-- [X] Start up a bit slow but might be the laptop but I can wait 1 second.
 
 [Starship](.config/starship.toml) - for a nice looking prompt.
 
@@ -43,10 +51,7 @@
 
 [Nvim](.config/nvim) - 90% of my overall config time went into Neovim... but it works.
 
-**80% happy status (reaching 100% is probably imposable right?)**
-
-- [X] Loads a bit slow I mean I have like way too many plugins
-- [X] Nvim UI seems to start up slow, believe it or not it's not because of the plugins.
+**85% happy status (reaching 100% is probably imposable right?)**
 
 ## More tools I use
 
