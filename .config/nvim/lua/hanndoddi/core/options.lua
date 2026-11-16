@@ -1,3 +1,10 @@
+-- disable unused remote plugin providers (none of my plugins need them)
+-- remove a line if a plugin ever needs that language
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 vim.cmd 'let g:netrw_liststyle = 3'
 
 local opt = vim.opt
